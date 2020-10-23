@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <br><br><br>
+    {% if user.is_authenticated %}
+    <div class="container">
+
+        <ul>
+          {% for todo in object_list %}
+                  {% if todo.author.id == user.id %}
+                  {% if todo.complete %}
+                  <li>
+                  <strike>
+                  {{ todo.task }}
+                  </strike>
+                  <a href="{% url 'delete-todo' todo.pk %}" class = "btn btn-danger btn-sm">Delete</a>
+                  </li>
+                  <hr>
+                  {% else %}
+                  <li>
+                  {{ todo.task }}
+                  <a href="{% url 'edit-todo' todo.pk %}" class = "btn btn-info btn-sm">Edit</a>
+                  <a href="{% url 'delete-todo' todo.pk %}" class = "btn btn-danger btn-sm">Delete</a>
+                  <a href="{% url 'complete-todo' todo.pk %}" class = "btn btn-warning btn-sm">Done</a>
+                  </li>
+                  <hr>
+                  {% endif %}
+                  {% endif %}
+
+          {% endfor %}
+        </ul>
+
+        <a href="{% url 'add-todo' %}" class = "btn btn-success">Add new item</a>
+
+    </div>
+    {% else %}
+        <h1>Get out hackker boy</h1>
+    {% endif %}
+
+{% endblock %}
