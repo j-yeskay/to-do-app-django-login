@@ -1,6 +1,7 @@
 # A Todo app with login authentication
- Styled using Bootstrap.
-
+ 
+Login Authentication from django's built-in authentication system and 
+Styled using Bootstrap
 
 ![Screenshot (49)](https://user-images.githubusercontent.com/65070442/97079691-c2018000-1613-11eb-8e6a-59ac383e9dbe.png)
 
